@@ -24,7 +24,12 @@ pen.goto(-300, 150)
 txt="Instructions:\n1.Enter the number of cells you want\nto be alive at start, max 8\n2.Select the boxes and the game will \nstart once you have finished your selection."
 txl=list(txt)
 #pen.write("Instructions:\n1.Enter the number of cells you want\nto be alive at start, max 8\n2.Select the boxes and the game will \nstart once you have finished your selection.", align="left", font=("Courier", 18, "normal"))
-pen.write(txt,font=("Courier", 18, "normal"))
+s=""
+for i in txl:
+    s=s+i
+    pen.clear()
+    pen.write(s,font=("Courier", 18, "normal"))
+    time.sleep(0.05)
 #wn.update()
 # pen.clear()
 

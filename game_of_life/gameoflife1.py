@@ -24,8 +24,43 @@ for i in range(0,4):
     tracker1.fd(n)
     tracker1.lt(90)
 
+startk=0
+print(startk)
+def startsc():
+    global startk
+    startk+=1     
+print(startk)
+
+wn.listen()
+wn.onkeypress(startsc,"space")
 #class cell():
  #   __init__
+
+pen=turtle.Turtle()
+pen.speed(0)
+pen.shape("square")
+pen.hideturtle()
+pen.penup()
+pen.color("Green")
+pen.goto(-300, 150)
+txt="Instructions:\n1.Enter the number of cells you want\nto be alive at start, max 8\n2.Select the boxes and the game will \nstart once you have finished your selection."
+txl=list(txt)
+#pen.write("Instructions:\n1.Enter the number of cells you want\nto be alive at start, max 8\n2.Select the boxes and the game will \nstart once you have finished your selection.", align="left", font=("Courier", 18, "normal"))
+s=""
+for i in txl:
+    if startk==0:
+        s=s+i
+        pen.clear()
+        pen.write(s,font=("Courier", 18, "normal"))
+        time.sleep(0.09)
+    elif startk==1:
+        pen.clear()
+        pen.write("Instructions:\n1.Enter the number of cells you want\nto be alive at start, max 8\n2.Select the boxes and the game will \nstart once you have finished your selection.", align="left", font=("Courier", 18, "normal"))
+    elif startk==2:
+        pen.clear()
+        wn.tracer(1)
+        break
+
 
 
 lr=[[0]*20]*20
