@@ -83,29 +83,28 @@ pen.color("Green")
 pen.goto(-300, 150)
 txt="Instructions:\n1.Enter the number of cells you want\nto be alive at start, max 8\n2.Select the boxes and the game will \nstart once you have finished your selection."
 txl=list(txt)
-#pen.write("Instructions:\n1.Enter the number of cells you want\nto be alive at start, max 8\n2.Select the boxes and the game will \nstart once you have finished your selection.", align="left", font=("Courier", 18, "normal"))
 s=""
 i=0
 wn.tracer(0)   
-# while True:
-#     if startk==0:
-#         while i<len(txt):
-#             if startk==0:
-#                 s=s+txt[i]
-#                 pen.clear()
-#                 pen.write(s,font=("Courier", 18, "normal"))
-#                 time.sleep(0.09)
-#                 i+=1
-#                 if (i>(len(txt)-2)):
-#                     startk=1
-#             else:
-#                 break
-#     elif startk==1:
-#         pen.clear()
-#         pen.write("Instructions:\n1.Enter the number of cells you want\nto be alive at start, max 8\n2.Select the boxes and the game will \nstart once you have finished your selection.", align="left", font=("Courier", 18, "normal"))
-#     elif startk==2:
-#         pen.clear()
-#         break
+while True:
+    if startk==0:
+        while i<len(txt):
+            if startk==0:
+                s=s+txt[i]
+                pen.clear()
+                pen.write(s,font=("Courier", 18, "normal"))
+                time.sleep(0.09)
+                i+=1
+                if (i>(len(txt)-2)):
+                    startk=1
+            else:
+                break
+    elif startk==1:
+        pen.clear()
+        pen.write("Instructions:\n1.Enter the number of cells you want\nto be alive at start, max 8\n2.Select the boxes and the game will \nstart once you have finished your selection.", align="left", font=("Courier", 18, "normal"))
+    elif startk==2:
+        pen.clear()
+        break
 
 
 
@@ -119,22 +118,13 @@ for i in range(0,20):
         print((i,j))
         print(lr[i][j].pos())
 
-# for i in range(0,20):
-#     for j in range(0,20):
-#         kx= -400 +20 + i*40
-#         lr[i][j].setx(kx)
-        
 
 print("\n\n")
 i=15
 j=8
 print((i,j))
 print(lr[i][j].pos())
-        
-wn.tracer(1)
 
-#main loop
-'''while True:
-    pass'''
+wn.tracer(1)
 
 wn.mainloop()
