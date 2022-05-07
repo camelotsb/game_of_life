@@ -1,4 +1,5 @@
 import turtle
+from turtle import Turtle, Screen
 import os
 import random
 import time
@@ -25,21 +26,46 @@ for i in range(0,4):
     tracker1.lt(90)
 
 startk=0
-print(startk)
 
 #start key
 def startsc():
     global startk
     startk+=1     
-print(startk)
 
 #selecting cell life
-
+def selec(x,y):
+    global lr
+    print("\n\n")
+    for n in range(0,20):
+        for m in range(0,20):
+            x1,y1=lr[i][j].xcor(),lr[i][j].ycor()
+            if ((x-x1>=-19 and x-x1<=19) and (y-y1>=-19 and y-y1<=19)):
+                lr[i][j].color((0,0,0))
+            
+def rough():
+    print("\n\n")
+    for n in range(0,20):
+        for m in range(0,20):
+            print((n,m))
+            print(lr[n][m].pos())       
 
 wn.listen()
 wn.onkeypress(startsc,"space")
-#class cell():
- #   __init__
+wn.onkeypress(rough,"Up")
+wn.onclick(selec)
+class cell(Turtle):
+    def __init__(self,life,xc,yc):
+        super().__init__(shape='square',visible=True)
+        self.color(life)
+        #self.shape("square")
+        #self.shapesize(2)
+        self.speed(0)
+        self.penup()
+        self.setx(xc)
+        self.sety(yc)
+        self.showturtle()
+    
+
 
 pen=turtle.Turtle()
 pen.speed(0)
@@ -80,20 +106,28 @@ lr=[[0]*20]*20
 turtle.speed(0)
 for i in range(0,20):
     for j in range(0,20):
-        lr[i][j]=turtle.Turtle()
-        lr[i][j].speed(0)
-        lr[i][j].penup()
-        kx=-400 +20 + i*40
-        ky=400 -20-j*40
-        #print(kx,"  ",ky)
-        lr[i][j].setpos(kx,ky)
-        lr[i][j].shape("square")
-        #lr[i][j].shapesize(2)
-        lr[i][j].color("white")
+        kx= -400 +20 + i*40
+        ky= 400 -20-j*40
+        lr[i][j]=cell((255,255,255),kx,ky)
+        print((i,j))
+        print(lr[i][j].pos())
+
+for i in range(0,20):
+    for j in range(0,20):
+        kx= -400 +20 + i*40
+        lr[i][j].setx(kx)
+        
+
+print("\n\n")
+i=15
+j=8
+print((i,j))
+print(lr[i][j].pos())
         
 wn.tracer(1)
 
 #main loop
-
+'''while True:
+    pass'''
 
 wn.mainloop()
