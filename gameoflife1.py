@@ -4,7 +4,7 @@ import os
 import random
 import time
 import math
-lr =[]
+
 #setting up the game window
 
 wn=turtle.Screen()
@@ -29,12 +29,12 @@ startk=0
 
 #start key
 def startsc():
-    
+    global startk
     startk+=1     
 
 #selecting cell life
 def selec(x,y):
-    
+    global lr
     print("\n\n")
     for n in range(0,20):
         for m in range(0,20):
@@ -43,13 +43,6 @@ def selec(x,y):
                 lr[i][j].color((0,0,0))
             
 def rough():
-    for i in range(0,20):
-        for j in range(0,20):
-            kx= -400 +20 + i*40
-            ky= 400 -20-j*40
-            lr[i][j]=cell((255,255,255),kx,ky)
-            print((i,j))
-            print(lr[i][j].pos())
     print("\n\n")
     for n in range(0,20):
         for m in range(0,20):
@@ -87,25 +80,25 @@ txl=list(txt)
 s=""
 i=0
 wn.tracer(0)   
-# while True:
-#     if startk==0:
-#         while i<len(txt):
-#             if startk==0:
-#                 s=s+txt[i]
-#                 pen.clear()
-#                 pen.write(s,font=("Courier", 18, "normal"))
-#                 time.sleep(0.09)
-#                 i+=1
-#                 if (i>(len(txt)-2)):
-#                     startk=1
-#             else:
-#                 break
-#     elif startk==1:
-#         pen.clear()
-#         pen.write("Instructions:\n1.Enter the number of cells you want\nto be alive at start, max 8\n2.Select the boxes and the game will \nstart once you have finished your selection.", align="left", font=("Courier", 18, "normal"))
-#     elif startk==2:
-#         pen.clear()
-#         break
+while True:
+    if startk==0:
+        while i<len(txt):
+            if startk==0:
+                s=s+txt[i]
+                pen.clear()
+                pen.write(s,font=("Courier", 18, "normal"))
+                time.sleep(0.09)
+                i+=1
+                if (i>(len(txt)-2)):
+                    startk=1
+            else:
+                break
+    elif startk==1:
+        pen.clear()
+        pen.write("Instructions:\n1.Enter the number of cells you want\nto be alive at start, max 8\n2.Select the boxes and the game will \nstart once you have finished your selection.", align="left", font=("Courier", 18, "normal"))
+    elif startk==2:
+        pen.clear()
+        break
 
 
 
@@ -119,10 +112,10 @@ for i in range(0,20):
         print((i,j))
         print(lr[i][j].pos())
 
-# for i in range(0,20):
-#     for j in range(0,20):
-#         kx= -400 +20 + i*40
-#         lr[i][j].setx(kx)
+for i in range(0,20):
+    for j in range(0,20):
+        kx= -400 +20 + i*40
+        lr[i][j].setx(kx)
         
 
 print("\n\n")
