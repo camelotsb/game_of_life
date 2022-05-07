@@ -26,10 +26,15 @@ for i in range(0,4):
 
 startk=0
 print(startk)
+
+#start key
 def startsc():
     global startk
     startk+=1     
 print(startk)
+
+#selecting cell life
+
 
 wn.listen()
 wn.onkeypress(startsc,"space")
@@ -47,15 +52,19 @@ txt="Instructions:\n1.Enter the number of cells you want\nto be alive at start, 
 txl=list(txt)
 #pen.write("Instructions:\n1.Enter the number of cells you want\nto be alive at start, max 8\n2.Select the boxes and the game will \nstart once you have finished your selection.", align="left", font=("Courier", 18, "normal"))
 s=""
+i=0
 wn.tracer(0)   
 while True:
     if startk==0:
-        for i in txl:
+        while i<len(txt):
             if startk==0:
-                s=s+i
+                s=s+txt[i]
                 pen.clear()
                 pen.write(s,font=("Courier", 18, "normal"))
                 time.sleep(0.09)
+                i+=1
+                if (i>(len(txt)-2)):
+                    startk=1
             else:
                 break
     elif startk==1:
@@ -83,5 +92,8 @@ for i in range(0,20):
         lr[i][j].color("white")
         
 wn.tracer(1)
+
+#main loop
+
 
 wn.mainloop()
