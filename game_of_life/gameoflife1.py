@@ -47,12 +47,17 @@ txt="Instructions:\n1.Enter the number of cells you want\nto be alive at start, 
 txl=list(txt)
 #pen.write("Instructions:\n1.Enter the number of cells you want\nto be alive at start, max 8\n2.Select the boxes and the game will \nstart once you have finished your selection.", align="left", font=("Courier", 18, "normal"))
 s=""
-for i in txl:
+    
+while True:
     if startk==0:
-        s=s+i
-        pen.clear()
-        pen.write(s,font=("Courier", 18, "normal"))
-        time.sleep(0.09)
+        for i in txl:
+            if startk==0:
+                s=s+i
+                pen.clear()
+                pen.write(s,font=("Courier", 18, "normal"))
+                time.sleep(0.09)
+            else:
+                break
     elif startk==1:
         pen.clear()
         pen.write("Instructions:\n1.Enter the number of cells you want\nto be alive at start, max 8\n2.Select the boxes and the game will \nstart once you have finished your selection.", align="left", font=("Courier", 18, "normal"))
