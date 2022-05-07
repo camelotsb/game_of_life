@@ -111,14 +111,8 @@ for i in range(0,20):
         print((i,j))
         print(lr[i][j].pos())
 
-<<<<<<< HEAD
-=======
-for i in range(0,20):
-    for j in range(0,20):
-        kx= -400 +20 + i*40
-        lr[i][j].setx(kx)
+
         
->>>>>>> ec0468a4ced431db1d5fc147db45859fe57cdfd3
 
 print("\n\n")
 i=15
