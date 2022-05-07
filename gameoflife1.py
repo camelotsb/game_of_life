@@ -4,7 +4,7 @@ import os
 import random
 import time
 import math
-lr =[]
+
 #setting up the game window
 
 wn=turtle.Screen()
@@ -29,12 +29,12 @@ startk=0
 
 #start key
 def startsc():
-    
+    global startk
     startk+=1     
 
 #selecting cell life
 def selec(x,y):
-    
+    global lr
     print("\n\n")
     for n in range(0,20):
         for m in range(0,20):
@@ -43,13 +43,6 @@ def selec(x,y):
                 lr[i][j].color((0,0,0))
             
 def rough():
-    for i in range(0,20):
-        for j in range(0,20):
-            kx= -400 +20 + i*40
-            ky= 400 -20-j*40
-            lr[i][j]=cell((255,255,255),kx,ky)
-            print((i,j))
-            print(lr[i][j].pos())
     print("\n\n")
     for n in range(0,20):
         for m in range(0,20):
@@ -118,6 +111,14 @@ for i in range(0,20):
         print((i,j))
         print(lr[i][j].pos())
 
+<<<<<<< HEAD
+=======
+for i in range(0,20):
+    for j in range(0,20):
+        kx= -400 +20 + i*40
+        lr[i][j].setx(kx)
+        
+>>>>>>> ec0468a4ced431db1d5fc147db45859fe57cdfd3
 
 print("\n\n")
 i=15
