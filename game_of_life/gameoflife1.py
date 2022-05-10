@@ -35,23 +35,23 @@ def startsc():
 #selecting cell life
 def selec(x,y):
     global lr
-    print("\n\n")
-    for n in range(0,20):
-        for m in range(0,20):
+    print("\n\nkkk")
+    for i in range(0,20):
+        for j in range(0,20):
             x1,y1=lr[i][j].xcor(),lr[i][j].ycor()
             if ((x-x1>=-19 and x-x1<=19) and (y-y1>=-19 and y-y1<=19)):
-                lr[i][j].color((0,0,0))
+                print()
+                if (lr[i][j].color()[0]==0):
+                    lr[i][j].color((255,255,255))
+                else:
+                    lr[i][j].color((0,0,0))
+                break
+
             
-def rough():
-    print("\n\n")
-    for n in range(0,20):
-        for m in range(0,20):
-            print((n,m))
-            print(lr[n][m].pos())       
+      
 
 wn.listen()
 wn.onkeypress(startsc,"space")
-wn.onkeypress(rough,"Up")
 wn.onclick(selec)
 class cell(Turtle):
     def __init__(self,life,xc,yc):
@@ -102,27 +102,23 @@ while True:
 
 
 
-lr=[[0]*20]*20
+lr=[]
+for i in range(20):
+    lc=[]
+    for j in range(20):
+        lc.append(0)
+    lr.append(lc)
+
 turtle.speed(0)
 for i in range(0,20):
     for j in range(0,20):
         kx= -400 +20 + i*40
         ky= 400 -20-j*40
         lr[i][j]=cell((255,255,255),kx,ky)
-        print((i,j))
-        print(lr[i][j].pos())
-
-for i in range(0,20):
-    for j in range(0,20):
-        kx= -400 +20 + i*40
-        lr[i][j].setx(kx)
+        
         
 
-print("\n\n")
-i=15
-j=8
-print((i,j))
-print(lr[i][j].pos())
+
         
 wn.tracer(1)
 
