@@ -35,16 +35,17 @@ def startsc():
 #selecting cell life
 def selec(x,y):
     global lr
-    print("\n\nkkk")
     for i in range(0,20):
         for j in range(0,20):
             x1,y1=lr[i][j].xcor(),lr[i][j].ycor()
             if ((x-x1>=-19 and x-x1<=19) and (y-y1>=-19 and y-y1<=19)):
                 print()
-                if (lr[i][j].color()[0]==0):
-                    lr[i][j].color((255,255,255))
-                else:
+                if (lr[i][j].life==0):
                     lr[i][j].color((0,0,0))
+                    lr[i][j].life=1
+                elif (lr[i][j].life==1):
+                    lr[i][j].color((255,255,255))
+                    lr[i][j].life=0
                 break
 
             
@@ -56,9 +57,8 @@ wn.onclick(selec)
 class cell(Turtle):
     def __init__(self,life,xc,yc):
         super().__init__(shape='square',visible=True)
-        self.color(life)
-        #self.shape("square")
-        #self.shapesize(2)
+        self.life=0
+        self.shapesize(1.5)
         self.speed(0)
         self.penup()
         self.setx(xc)
@@ -114,7 +114,8 @@ for i in range(0,20):
     for j in range(0,20):
         kx= -400 +20 + i*40
         ky= 400 -20-j*40
-        lr[i][j]=cell((255,255,255),kx,ky)
+        lr[i][j]=cell(0,kx,ky)
+        lr[i][j].color((255,255,255))
         
         
 
