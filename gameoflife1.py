@@ -26,29 +26,43 @@ for i in range(0,4):
     tracker1.lt(90)
 
 startk=0
+d1={}
+for i in range(0,20):
+    for j in range(0,20):
+        d1[(i,j)]=0
+
 
 #start key
 def startsc():
     global startk
     startk+=1     
+def kill(i,j):
+    global lr
+    lr[i][j].color((255,255,255))
+    lr[i][j].life=0
 
+def forge(i,j):
+    global lr
+    lr[i][j].color((0,0,0))
+    lr[i][j].life=1
+  
 #selecting cell life
 def selec(x,y):
     global lr
-    for i in range(0,20):
-        for j in range(0,20):
-            x1,y1=lr[i][j].xcor(),lr[i][j].ycor()
-            if ((x-x1>=-19 and x-x1<=19) and (y-y1>=-19 and y-y1<=19)):
-                print()
-                if (lr[i][j].life==0):
-                    lr[i][j].color((0,0,0))
-                    lr[i][j].life=1
-                elif (lr[i][j].life==1):
-                    lr[i][j].color((255,255,255))
-                    lr[i][j].life=0
-                break
+    global startk
+    if startk==2:
+        for i in range(0,20):
+            for j in range(0,20): 
+                x1,y1=lr[i][j].xcor(),lr[i][j].ycor()
+                if ((x-x1>=-19 and x-x1<=19) and (y-y1>=-19 and y-y1<=19)):
+                    print()
+                    if (lr[i][j].life==0):
+                        forge(i,j)
+                    elif (lr[i][j].life==1):
+                        kill(i,j)
+                    break
 
-            
+              
       
 
 wn.listen()
@@ -65,9 +79,9 @@ class cell(Turtle):
         self.sety(yc)
         self.showturtle()
     
+ 
 
-
-pen=turtle.Turtle()
+pen=turtle.Turtle()  
 pen.speed(0)
 pen.shape("square")
 pen.hideturtle()
@@ -116,15 +130,54 @@ for i in range(0,20):
         ky= 400 -20-j*40
         lr[i][j]=cell(0,kx,ky)
         lr[i][j].color((255,255,255))
-        
-        
-
-
-        
 wn.tracer(1)
 
+
+
+
+
+ddd=turtle.Turtle()
+ddd.penup()
+ddd.speed(0)
+ddd.setpos(0,-350)
+ddd.speed(0)
+ddd.shape("square")
+ddd.color("red")
+dddsx,dddsy=10,10
+#wn.tracer(0)
 #main loop
-'''while True:
-    pass'''
+while True:
+    if startk>=3:
+        for i in range(1,19):
+            for j in range(1,19):
+                print((i,j))
+                cnl=lr[i+1][j].life+lr[i][j+1].life+lr[i-1][j].life+lr[i][j-1].life+lr[i+1][j+1].life+lr[i-1][j-1].life+lr[i+1][j-1].life+lr[i-1][j+1].life
+                print(cnl)
+                if (cnl==3):
+                    d1[(i,j)]=1
+                elif (cnl==2):
+                    d1[(i,j)]=lr[i][j].life
+                else:
+                    d1[(i,j)]=0
+        wn.tracer(0)
+        for i in range(1,19):
+            for j in range(1,19):
+                if d1[(i,j)]==1:
+                    forge(i,j)
+                if d1[(i,j)]==0:
+                    kill(i,j)
+        wn.tracer(1)
+
+    else:
+        print(startk)
+        dddx=ddd.xcor()
+        dddy=ddd.ycor()
+        dddx+=dddsx
+        dddy+=0
+        if (dddx>=-450 and dddx<=450) :
+            ddd.setpos(dddx,dddy)
+        else:
+            dddsx=dddsx*-1
+
 
 wn.mainloop()
