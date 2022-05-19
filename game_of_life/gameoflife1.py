@@ -139,12 +139,12 @@ wn.tracer(1)
 ddd=turtle.Turtle()
 ddd.penup()
 ddd.speed(0)
-ddd.setpos(0,-350)
+ddd.setpos(-500,0)
 ddd.speed(0)
 ddd.shape("square")
 ddd.color("red")
 dddsx,dddsy=10,10
-#wn.tracer(0)
+
 #main loop
 while True:
     if startk>=3:
@@ -172,9 +172,9 @@ while True:
         print(startk)
         dddx=ddd.xcor()
         dddy=ddd.ycor()
-        dddx+=dddsx
-        dddy+=0
-        if (dddx>=-450 and dddx<=450) :
+        dddy+=dddsx
+        dddx+=0
+        if (dddy>=-450 and dddy<=450) :
             ddd.setpos(dddx,dddy)
         else:
             dddsx=dddsx*-1
